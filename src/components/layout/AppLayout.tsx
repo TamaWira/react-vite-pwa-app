@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { PiPlus } from "react-icons/pi";
+import AddExpenseButton from "../AddExpenseButton";
 import Header from "./Header";
 
 export default function AppLayout() {
@@ -10,9 +10,7 @@ export default function AppLayout() {
         <div className="p-5">
           <Outlet />
         </div>
-        <button className="right-5 bottom-5 absolute flex justify-center items-center bg-white rounded-full w-8 h-8">
-          <PiPlus className="text-[#2E302E]" />
-        </button>
+        <AddExpenseButton />
       </div>
     </>
   );
