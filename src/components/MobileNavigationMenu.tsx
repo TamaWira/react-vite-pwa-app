@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { Drawer } from "vaul";
-import MobileMenuButton from "./MobileMenuButton";
 import { menus } from "../lib/constants";
+import MobileMenuButton from "./MobileMenuButton";
 
 export default function MobileNavigationMenu() {
   const [isOpen, setIsOpen] = useState(false);
