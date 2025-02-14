@@ -25,7 +25,7 @@ export default function BottomBar() {
         </Menu>
       </div>
 
-      <button className="right-0 bottom-6 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16">
+      <button className="right-0 bottom-5 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16">
         <PiPlus className="bg-[#364935] p-3 border rounded-full w-14 h-14 text-white" />
       </button>
     </footer>
