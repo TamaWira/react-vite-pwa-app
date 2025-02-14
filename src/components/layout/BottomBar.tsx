@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router";
 
 export default function BottomBar() {
   return (
-    <footer className="right-0 bottom-0 left-0 absolute flex justify-evenly items-center gap-10 bg-[#364935] py-6 rounded-t-4xl text-white text-xl">
+    <footer className="right-0 bottom-0 left-0 absolute flex justify-evenly items-center gap-10 bg-[#364935] py-5 rounded-t-4xl text-white text-xl">
       <div className="flex justify-center items-center gap-12 w-full">
         <Menu path="/">
           <IoMdHome />
@@ -25,7 +25,7 @@ export default function BottomBar() {
         </Menu>
       </div>
 
-      <button className="right-0 bottom-1 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16">
+      <button className="right-0 bottom-6 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16">
         <PiPlus className="bg-[#364935] p-3 border rounded-full w-14 h-14 text-white" />
       </button>
     </footer>
