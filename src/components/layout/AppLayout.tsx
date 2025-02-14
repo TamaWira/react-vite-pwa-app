@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import AddExpenseButton from "../AddExpenseButton";
+import BottomBar from "./BottomBar";
 import Header from "./Header";
 
 export default function AppLayout() {
@@ -10,7 +10,8 @@ export default function AppLayout() {
         <div className="p-5">
           <Outlet />
         </div>
-        <AddExpenseButton />
+        {/* <AddExpenseButton /> */}
+        <BottomBar />
       </div>
     </>
   );
