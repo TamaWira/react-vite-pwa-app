@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router";
 
 export default function BottomBar() {
   return (
-    <footer className="right-0 bottom-0 left-0 absolute flex justify-evenly items-center gap-10 bg-[#364935] py-3 rounded-t-4xl text-white text-xl">
+    <footer className="right-0 bottom-0 left-0 absolute flex justify-evenly items-center gap-10 bg-[#364935] py-6 rounded-t-4xl text-white text-xl">
       <div className="flex justify-center items-center gap-12 w-full">
         <Menu path="/">
           <IoMdHome />
