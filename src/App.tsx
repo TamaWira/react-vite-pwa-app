@@ -1,17 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import appLogo from '/favicon.svg'
-import PWABadge from './PWABadge.tsx'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import appLogo from "/favicon.svg";
+import PWABadge from "./PWABadge.tsx";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
         <a href="https://vite.dev" target="_blank">
-          <img src={appLogo} className="logo" alt="my-react-ts-vite-pwa-app logo" />
+          <img
+            src={appLogo}
+            className="logo"
+            alt="my-react-ts-vite-pwa-app logo"
+          />
         </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
@@ -30,8 +34,9 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <PWABadge />
+      <p>Test</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
