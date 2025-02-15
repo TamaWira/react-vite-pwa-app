@@ -5,12 +5,12 @@ import { Drawer } from "vaul";
 import { menus } from "../lib/constants";
 
 export default function MobileNavigationMenu() {
-  const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Drawer.Root direction="right" open={isOpen} onOpenChange={setIsOpen}>
-      <Drawer.Trigger>
+      <Drawer.Trigger className="focus:outline-none">
         <RxHamburgerMenu className="w-5 h-5 font-semibold text-white" />
       </Drawer.Trigger>
       <Drawer.Portal>
