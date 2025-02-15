@@ -21,7 +21,7 @@ export default function AddExpenseDrawer() {
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content className="right-0 bottom-0 left-0 fixed bg-[#2E302E] rounded-t-4xl outline-none h-[97%] text-white">
+        <Drawer.Content className="right-0 bottom-0 left-0 fixed flex flex-col bg-[#2E302E] rounded-t-4xl outline-none h-[97%] text-white">
           <Drawer.Title />
           <Drawer.Description />
           <AddExpenseForm setIsOpen={setIsOpen} />

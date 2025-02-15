@@ -67,30 +67,30 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
   };
 
   return (
-    <div className="p-7 text-white">
+    <div className="flex-1 p-7 text-white">
       <h2 className="font-semibold text-lg text-center">New Expense</h2>
-      <form onSubmit={onSubmit}>
-        <div className="flex justify-center items-center gap-1 py-10">
-          <label htmlFor="amount" className="mr-1">
-            Rp
-          </label>
+      <form onSubmit={onSubmit} className="flex flex-col h-full">
+        <div className="flex justify-center items-center gap-1 py-10 border">
+          <label htmlFor="amount">Rp</label>
           <input
             type="text"
             id="amount"
             value={form.amount}
             placeholder="0"
-            className="focus:outline-none w-fit placeholder:text-white text-3xl appearance-none field-sizing-content"
+            className="border focus:outline-none w-fit placeholder:text-white text-3xl appearance-none field-sizing-content"
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
         </div>
-        <button
-          type="submit"
-          className="bg-white py-3 rounded-full w-full text-black"
-        >
-          Save
-        </button>
+        <div className="flex flex-1 items-end py-7">
+          <button
+            type="submit"
+            className="bg-white py-3 rounded-full w-full text-black"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
