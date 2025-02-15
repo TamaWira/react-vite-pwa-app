@@ -1,6 +1,7 @@
 import { PiPlus } from "react-icons/pi";
 import { useLocation } from "react-router";
 import { Drawer } from "vaul";
+import AddExpenseForm from "./AddExpenseForm";
 
 export default function AddExpenseDrawer() {
   const { pathname } = useLocation();
@@ -21,9 +22,7 @@ export default function AddExpenseDrawer() {
         <Drawer.Content className="right-0 bottom-0 left-0 fixed bg-[#2E302E] rounded-t-4xl outline-none h-[97%] text-white">
           <Drawer.Title />
           <Drawer.Description />
-          <div className="p-7 font-semibold text-2xl">
-            <h2>Add Expense</h2>
-          </div>
+          <AddExpenseForm />
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
