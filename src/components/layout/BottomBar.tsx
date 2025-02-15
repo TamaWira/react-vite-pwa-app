@@ -1,9 +1,8 @@
-import { IoHomeSharp } from "react-icons/io5";
-import { IoSettingsSharp } from "react-icons/io5";
-import { MdAccountCircle } from "react-icons/md";
-import { PiPlus } from "react-icons/pi";
 import { FaInfoCircle } from "react-icons/fa";
+import { IoHomeSharp, IoSettingsSharp } from "react-icons/io5";
+import { MdAccountCircle } from "react-icons/md";
 import { Link, useLocation } from "react-router";
+import AddExpenseButton from "../AddExpenseButton";
 
 export default function BottomBar() {
   return (
@@ -25,9 +24,7 @@ export default function BottomBar() {
         </Menu>
       </div>
 
-      <button className="right-0 bottom-5 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16">
-        <PiPlus className="bg-[#364935] p-3 border rounded-full w-14 h-14 text-white" />
-      </button>
+      <AddExpenseButton />
     </footer>
   );
 }
