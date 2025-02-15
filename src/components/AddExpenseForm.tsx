@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FocusEvent } from "react";
+import { useState, ChangeEvent, FocusEvent, useEffect, useRef } from "react";
 import { useExpenseContext } from "../lib/hooks";
 
 type Form = {
@@ -10,19 +10,17 @@ type Props = {
 };
 
 export default function AddExpenseForm({ setIsOpen }: Props) {
-  // We keep the amount as a string so we can store both the unformatted (editing) and formatted values.
   const { expenses, handleChangeExpenses } = useExpenseContext();
-  const [form, setForm] = useState<Form>({
-    amount: "",
-  });
+  const [form, setForm] = useState<Form>({ amount: "" });
+
+  // Refs for the input and hidden measuring span
+  const inputRef = useRef<HTMLInputElement>(null);
+  const spanRef = useRef<HTMLSpanElement>(null);
 
   // Remove all non-digit characters.
-  const unformatNumber = (value: string): string => {
-    return value.replace(/\D/g, "");
-  };
+  const unformatNumber = (value: string): string => value.replace(/\D/g, "");
 
-  // Format the number using a locale that uses dots for thousand separators (e.g., "de-DE").
-  // You can change "de-DE" to another locale if needed.
+  // Format the number with thousand separators (e.g., "de-DE").
   const formatNumber = (value: string): string => {
     const numericValue = Number(unformatNumber(value));
     if (!value || isNaN(numericValue)) return "";
@@ -30,22 +28,29 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // As the user types, update the state.
-    setForm({ ...form, amount: parseInt(e.target.value) });
+    const value = e.target.value;
+    // If empty, set to empty string; otherwise, parse the value
+    setForm({ ...form, amount: value === "" ? "" : parseInt(value) });
   };
 
   const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
     // On focus, remove formatting so the user can edit the raw number.
-    // setAmount(unformatNumber(e.target.value));
     setForm({ ...form, amount: unformatNumber(e.target.value) });
   };
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     // On blur, format the number with thousand separators.
-    // setAmount(formatNumber(e.target.value));
-    console.log(formatNumber(e.target.value));
     setForm({ ...form, amount: formatNumber(e.target.value) });
   };
+
+  // Update the input width based on the content of the hidden span.
+  useEffect(() => {
+    if (inputRef.current && spanRef.current) {
+      const spanWidth = spanRef.current.offsetWidth;
+      // Add a small extra space (2px) so the caret isn’t cut off.
+      inputRef.current.style.width = `${spanWidth + 2}px`;
+    }
+  }, [form.amount]);
 
   const generateExpense = (form: Form) => {
     return {
@@ -70,18 +75,30 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
     <div className="flex-1 p-7 text-white">
       <h2 className="font-semibold text-lg text-center">New Expense</h2>
       <form onSubmit={onSubmit} className="flex flex-col h-full">
-        <div className="flex justify-center items-center gap-1 py-10 border">
-          <label htmlFor="amount">Rp</label>
+        <div className="relative flex justify-center items-center gap-1 py-10">
+          <label htmlFor="amount" className="text-3xl">
+            Rp
+          </label>
           <input
+            ref={inputRef}
             type="text"
             id="amount"
             value={form.amount}
             placeholder="0"
-            className="border focus:outline-none w-fit placeholder:text-white text-3xl appearance-none field-sizing-content"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            className="inline-block focus:outline-none placeholder:text-white text-3xl appearance-none"
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
+          {/* Hidden span to measure text width. It uses the same styling as the input. */}
+          <span
+            ref={spanRef}
+            className="invisible absolute text-3xl whitespace-pre"
+          >
+            {form.amount === "" || form.amount === 0 ? "0" : form.amount}
+          </span>
         </div>
         <div className="flex flex-1 items-end py-7">
           <button
