@@ -1,7 +1,7 @@
 import { IoHomeSharp, IoSettingsSharp, IoStatsChart } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { Link, useLocation } from "react-router";
-import AddExpenseButton from "../AddExpenseButton";
+import AddExpenseDrawer from "../AddExpenseDrawer";
 
 export default function BottomBar() {
   return (
@@ -23,7 +23,8 @@ export default function BottomBar() {
         </Menu>
       </div>
 
-      <AddExpenseButton />
+      {/* <AddExpenseButton /> */}
+      <AddExpenseDrawer />
     </footer>
   );
 }

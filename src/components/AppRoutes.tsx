@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router";
 import AppLayout from "./layout/AppLayout";
-import AddExpensePage from "./pages/AddExpensePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -11,7 +10,7 @@ export default function AppRoutes() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="add" element={<AddExpensePage />} />
+        {/* <Route path="add" element={<AddExpensePage />} /> */}
         <Route path="stats" element={<StatsPage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="login" element={<LoginPage />} />

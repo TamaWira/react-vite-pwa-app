@@ -9,6 +9,34 @@ export function formatToRupiah(amount: number): string {
   }).format(amount);
 }
 
+export function formatDate(dateString: string): string {
+  const dateParts = dateString.split("-");
+  if (dateParts.length !== 3) {
+    throw new Error("Invalid date format. Expected format: YYYY-MM-DD");
+  }
+
+  const [year, month, day] = dateParts;
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const monthIndex = parseInt(month, 10) - 1;
+  const monthName = monthNames[monthIndex];
+
+  return `${parseInt(day, 10)} ${monthName} ${year}`;
+}
+
 export const generateRandomExpenses = () => {
   const expenses: Expense[] = [];
   let id = 1;
@@ -63,6 +91,11 @@ export const aggregateExpenses = (expenses: Expense[]) => {
       acc[expense.date].total += expense.amount;
       return acc;
     }, {})
+  );
+
+  // Sort the aggregated expenses from newest to oldest based on the date.
+  aggregatedExpenses.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   return aggregatedExpenses;

@@ -18,8 +18,8 @@ export default defineConfig({
       },
 
       manifest: {
-        name: "my-react-ts-vite-pwa-app",
-        short_name: "my-react-ts-vite-pwa-app",
+        name: "My Expense Tracker",
+        short_name: "My Expense Tracker",
         description: "React Typescript Vite PWA App",
         theme_color: "#ffffff",
       },
