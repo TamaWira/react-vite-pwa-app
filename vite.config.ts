@@ -21,7 +21,7 @@ export default defineConfig({
         name: "My Expense Tracker",
         short_name: "My Expense Tracker",
         description: "React Typescript Vite PWA App",
-        theme_color: "#ffffff",
+        theme_color: "#2E302E",
       },
 
       workbox: {
