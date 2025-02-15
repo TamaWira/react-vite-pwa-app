@@ -7,7 +7,7 @@ export default function AddExpenseDrawer() {
 
   return (
     <Drawer.Root shouldScaleBackground>
-      <Drawer.Trigger className="right-0 bottom-7 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16">
+      <Drawer.Trigger className="right-0 bottom-7 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full outline-none w-16 h-16">
         <PiPlus
           className={` p-3 border rounded-full w-14 h-14 ${
             pathname === "/add"
