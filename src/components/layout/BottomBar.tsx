@@ -6,7 +6,7 @@ import AddExpenseButton from "../AddExpenseButton";
 
 export default function BottomBar() {
   return (
-    <footer className="right-0 bottom-0 left-0 absolute flex justify-evenly items-center gap-10 bg-[#364935] rounded-t-4xl text-white text-xl">
+    <footer className="right-0 bottom-0 left-0 fixed flex justify-evenly items-center gap-10 bg-[#364935] rounded-t-4xl text-white text-xl">
       <div className="flex justify-center items-center w-full">
         <Menu path="/">
           <IoHomeSharp />
