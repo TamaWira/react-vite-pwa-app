@@ -1,8 +1,6 @@
 <svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_9_2)">
-<rect width="1080" height="1080" fill="#2E302E"/>
-<rect width="1080" height="1080" fill="#2E302E"/>
-<rect x="170" y="170" width="740" height="740" fill="url(#pattern0_9_2)"/>
+<rect width="1080" height="1080" fill="url(#pattern0_9_2)"/>
 </g>
 <defs>
 <pattern id="pattern0_9_2" patternContentUnits="objectBoundingBox" width="1" height="1">
