@@ -1,14 +1,9 @@
-import {
-  aggregateExpenses,
-  generateRandomExpenses,
-  formatToRupiah,
-} from "../lib/functions";
+import { formatDate, formatToRupiah } from "../lib/functions";
+import { useExpenseContext } from "../lib/hooks";
 import { AggregatedExpense, Expense } from "../lib/types";
-import { formatDate } from "../lib/functions";
 
 export default function ExpensesDetails() {
-  const expenses = generateRandomExpenses();
-  const aggregatedExpenses = aggregateExpenses(expenses);
+  const { aggregatedExpenses } = useExpenseContext();
 
   return (
     <section>
