@@ -1,18 +1,17 @@
-import { FaInfoCircle } from "react-icons/fa";
-import { IoHomeSharp, IoSettingsSharp } from "react-icons/io5";
+import { IoHomeSharp, IoSettingsSharp, IoStatsChart } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { Link, useLocation } from "react-router";
 import AddExpenseButton from "../AddExpenseButton";
 
 export default function BottomBar() {
   return (
-    <footer className="right-0 bottom-0 left-0 fixed flex justify-evenly items-center gap-10 bg-[#364935] rounded-t-4xl text-white text-xl">
+    <footer className="right-0 bottom-0 left-0 fixed flex justify-evenly items-center gap-10 bg-[#364935] pb-3 rounded-t-4xl text-white text-xl">
       <div className="flex justify-center items-center w-full">
         <Menu path="/">
           <IoHomeSharp />
         </Menu>
-        <Menu path="/about">
-          <FaInfoCircle />
+        <Menu path="/stats">
+          <IoStatsChart />
         </Menu>
       </div>
       <div className="flex justify-center items-center w-full">

@@ -7,7 +7,7 @@ export default function AddExpenseButton() {
   return (
     <Link
       to="/add"
-      className="right-0 bottom-5 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16"
+      className="right-0 bottom-7 left-0 absolute flex justify-center items-center bg-[#364935] mx-auto rounded-full w-16 h-16"
     >
       <PiPlus
         className={` p-3 border rounded-full w-14 h-14 ${

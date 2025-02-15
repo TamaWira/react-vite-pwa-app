@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router";
 import AppLayout from "./layout/AppLayout";
-import AboutPage from "./pages/AboutPage";
+import AddExpensePage from "./pages/AddExpensePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-import AddExpensePage from "./pages/AddExpensePage";
+import StatsPage from "./pages/StatsPage";
 
 export default function AppRoutes() {
   return (
@@ -12,7 +12,7 @@ export default function AppRoutes() {
       <Route element={<AppLayout />}>
         <Route index element={<HomePage />} />
         <Route path="add" element={<AddExpensePage />} />
-        <Route path="about" element={<AboutPage />} />
+        <Route path="stats" element={<StatsPage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="login" element={<LoginPage />} />
       </Route>
