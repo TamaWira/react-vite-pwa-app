@@ -1,4 +1,5 @@
-import { useState, ChangeEvent, FocusEvent, useEffect, useRef } from "react";
+import { ChangeEvent, FocusEvent, useState } from "react";
+import AutosizeInput from "react-input-autosize";
 import { useExpenseContext } from "../lib/hooks";
 
 type Form = {
@@ -13,10 +14,6 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
   const { expenses, handleChangeExpenses } = useExpenseContext();
   const [form, setForm] = useState<Form>({ amount: "" });
 
-  // Refs for the input and hidden measuring span
-  const inputRef = useRef<HTMLInputElement>(null);
-  const spanRef = useRef<HTMLSpanElement>(null);
-
   // Remove all non-digit characters.
   const unformatNumber = (value: string): string => value.replace(/\D/g, "");
 
@@ -29,28 +26,18 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // If empty, set to empty string; otherwise, parse the value
     setForm({ ...form, amount: value === "" ? "" : parseInt(value) });
   };
 
   const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-    // On focus, remove formatting so the user can edit the raw number.
+    // Remove formatting on focus so the user sees the raw number.
     setForm({ ...form, amount: unformatNumber(e.target.value) });
   };
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    // On blur, format the number with thousand separators.
+    // Format the number on blur.
     setForm({ ...form, amount: formatNumber(e.target.value) });
   };
-
-  // Update the input width based on the content of the hidden span.
-  useEffect(() => {
-    if (inputRef.current && spanRef.current) {
-      const spanWidth = spanRef.current.offsetWidth;
-      // Add a small extra space (2px) so the caret isn’t cut off.
-      inputRef.current.style.width = `${spanWidth + 2}px`;
-    }
-  }, [form.amount]);
 
   const generateExpense = (form: Form) => {
     return {
@@ -79,26 +66,17 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
           <label htmlFor="amount" className="text-3xl">
             Rp
           </label>
-          <input
-            ref={inputRef}
-            type="text"
-            id="amount"
-            value={form.amount}
+          <AutosizeInput
+            required
             placeholder="0"
+            type="text"
             inputMode="numeric"
-            pattern="[0-9]*"
+            value={form.amount}
             className="inline-block focus:outline-none placeholder:text-white text-3xl appearance-none"
             onChange={handleChange}
-            onFocus={handleFocus}
             onBlur={handleBlur}
+            onFocus={handleFocus}
           />
-          {/* Hidden span to measure text width. It uses the same styling as the input. */}
-          <span
-            ref={spanRef}
-            className="invisible absolute text-3xl whitespace-pre"
-          >
-            {form.amount === "" || form.amount === 0 ? "0" : form.amount}
-          </span>
         </div>
         <div className="flex flex-1 items-end py-7">
           <button
