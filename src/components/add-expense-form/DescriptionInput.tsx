@@ -18,7 +18,7 @@ export default function DescriptionInput({ form, setForm }: Props) {
         onChange={(e) => setForm({ ...form, description: e.target.value })}
         required
         placeholder="Ayam Geprek"
-        className="col-span-2 col-start-2 p-2 border rounded-md w-full"
+        className="col-span-2 col-start-2 p-2 border rounded-md outline-none w-full"
       />
     </>
   );

@@ -18,7 +18,7 @@ function CategoryInput({ form, setForm }: Props) {
         onChange={(e) => setForm({ ...form, category: e.target.value })}
         required
         placeholder="Food"
-        className="col-span-2 col-start-2 p-2 border rounded-md w-full"
+        className="col-span-2 col-start-2 p-2 border rounded-md outline-none w-full"
       />
     </>
   );

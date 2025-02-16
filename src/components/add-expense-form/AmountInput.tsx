@@ -43,7 +43,7 @@ function AmountInput({ form, setForm }: Props) {
         type="text"
         inputMode="numeric"
         value={form.amount}
-        className="inline-block focus:outline-none placeholder:text-white text-3xl appearance-none"
+        className="inline-block outline-none placeholder:text-white text-3xl appearance-none"
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleFocus}
