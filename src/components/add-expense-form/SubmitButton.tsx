@@ -1,4 +1,4 @@
-export default function AddExpenseFormSubmitButton() {
+function SubmitButton() {
   return (
     <button
       type="submit"
@@ -8,3 +8,5 @@ export default function AddExpenseFormSubmitButton() {
     </button>
   );
 }
+
+export { SubmitButton };

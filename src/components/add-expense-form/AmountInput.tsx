@@ -6,7 +6,7 @@ type Props = {
   setForm: (state: Form) => void;
 };
 
-export default function AddExpenseFormAmount({ form, setForm }: Props) {
+function AmountInput({ form, setForm }: Props) {
   // Remove all non-digit characters.
   const unformatNumber = (value: string): string => value.replace(/\D/g, "");
 
@@ -51,3 +51,5 @@ export default function AddExpenseFormAmount({ form, setForm }: Props) {
     </div>
   );
 }
+
+export { AmountInput };

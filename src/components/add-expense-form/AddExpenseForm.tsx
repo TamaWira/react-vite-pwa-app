@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { useExpenseContext } from "../lib/hooks";
-import AddExpenseFormAmount from "./AddExpenseFormAmount";
-import AddExpenseFormSubmitButton from "./AddExpenseFormSubmitButton";
+import { useExpenseContext } from "../../lib/hooks";
+import { AmountInput } from "./AmountInput";
+import { CategoryInput } from "./CategoryInput";
+import DescriptionInput from "./DescriptionInput";
+import { ExpenseDatePicker } from "./ExpenseDatePicker";
+import { SubmitButton } from "./SubmitButton";
 
 export type Form = {
+  category: string;
+  description: string;
   amount: string | number;
+  date: Date;
 };
 
 type Props = {
@@ -13,7 +19,12 @@ type Props = {
 
 export default function AddExpenseForm({ setIsOpen }: Props) {
   const { expenses, handleChangeExpenses } = useExpenseContext();
-  const [form, setForm] = useState<Form>({ amount: "" });
+  const [form, setForm] = useState<Form>({
+    amount: "",
+    category: "",
+    description: "",
+    date: new Date(),
+  });
 
   // Remove all non-digit characters.
   const unformatNumber = (value: string): string => value.replace(/\D/g, "");
@@ -24,9 +35,9 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
       id: new Date().getTime(),
       userId: 1,
       amount: Number(unformatNumber(form.amount.toString())),
-      description: "Testing",
-      category: "Testing",
-      date: new Date().toISOString().split("T")[0],
+      description: form.description,
+      category: form.category,
+      date: form.date.toISOString().split("T")[0],
       createdAt: new Date().toISOString().split("T")[0],
       updatedAt: null,
     };
@@ -43,12 +54,14 @@ export default function AddExpenseForm({ setIsOpen }: Props) {
     <div className="flex-1 p-7 text-white">
       <h2 className="font-semibold text-lg text-center">New Expense</h2>
       <form onSubmit={onSubmit} className="flex flex-col h-full">
-        <AddExpenseFormAmount form={form} setForm={setForm} />
-        <div>
-          <label htmlFor="category">Category</label>
+        <AmountInput form={form} setForm={setForm} />
+        <div className="items-center gap-y-3 grid grid-cols-3 text-sm">
+          <DescriptionInput form={form} setForm={setForm} />
+          <CategoryInput form={form} setForm={setForm} />
+          <ExpenseDatePicker form={form} setForm={setForm} />
         </div>
         <div className="flex flex-1 items-end py-7">
-          <AddExpenseFormSubmitButton />
+          <SubmitButton />
         </div>
       </form>
     </div>
